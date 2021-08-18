@@ -50,7 +50,7 @@ class Form extends Component {
     });
   };
 
-  addressone = (event) => {
+  address1 = (event) => {
     this.setState({
       addressOne: event.target.value,
     });
@@ -182,7 +182,7 @@ class Form extends Component {
             minLength="5"
           />
           <br />
-          <label>Country :</label> <br></br>
+          <label>Country:</label> <br></br>
           <div
             class="btn btn-secondary dropdown-toggle"
             href="#"
