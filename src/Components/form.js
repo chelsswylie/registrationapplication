@@ -168,6 +168,8 @@ class Form extends Component {
             value={this.state.add}
             onChange={this.ziparea}
             placeholder="ZIP"
+            maxLength="9"
+            minLength="5"
           />
           <br />
           <label>Country :</label> <br></br>
