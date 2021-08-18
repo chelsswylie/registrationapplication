@@ -1,0 +1,54 @@
+.header {
+  grid-area: hd;
+  background-color: green;
+}
+.footer {
+  grid-area: ft;
+}
+.content {
+  grid-area: main;
+}
+.sidebar {
+  grid-area: sd;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  grid-template-areas:
+    "hd hd hd hd   hd   hd   hd   hd   hd"
+    "sd sd sd main main main main main main"
+    "ft ft ft ft   ft   ft   ft   ft   ft";
+}
+
+/* .wrapper {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-auto-rows: minmax(10px, auto);
+  padding-left: 50%;
+  grid-template-areas:
+    "hd hd hd hd   hd   hd   hd   hd   hd"
+    "sd sd sd main main main main main main"
+    "ft ft ft ft   ft   ft   ft   ft   ft";
+}
+
+.header {
+  grid-area: header;
+  background-color: aqua;
+}
+
+.main {
+  grid-area: main;
+  background-color: lightgreen;
+}
+
+.aside {
+  grid-area: aside;
+  background-color: yellow;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: pink;
+} */

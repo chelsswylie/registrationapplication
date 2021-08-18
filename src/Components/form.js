@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 // import Select from "react-select";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./form.css";
+import axios from "axios";
 
 class Form extends Component {
   constructor(props) {
@@ -19,6 +20,23 @@ class Form extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     // this.handleValidation = this.handleValidation.bind(this);
+  }
+
+  // function createNew() {
+  //   const [input, setInput] = useState({
+  //     firstName: "",
+  //     lastName: "",
+  //     Address1: "",
+  //     Address2: "",
+  //     City: "",
+  //     State: "",
+  //     Zip: null,
+  //     Country: "US",
+  //   })
+  // }
+
+  handleChange(event) {
+    console.log(event.target);
   }
 
   firsthandler = (event) => {
@@ -75,34 +93,19 @@ class Form extends Component {
     );
     console.log(this.state);
 
-    this.setState({
-      firstName: "",
-      lastName: "",
-      Address1: "",
-      Address2: "",
-      City: "",
-      State: "",
-      Zip: null,
-      Country: "",
-    });
     event.preventDefault();
+    const newRegistration = {
+      firstName: this.firsthandler.firstName,
+      lastName: this.lasthandler.lastName,
+      Address1: this.addressone.Address1,
+      Address2: this.addresstwo.Address2,
+      City: this.cityarea.City,
+      State: this.statearea.State,
+      Zip: this.ziparea.Zip,
+      Country: this.countryarea.Country,
+    };
 
-    const data = new FormData();
-    data.append("firstName", this.firstName.value);
-    data.append("lastName", this.lastName.value);
-    data.append("Address1", this.addressOne.value);
-    data.append("Address2", this.Address2.value);
-    data.append("City", this.city.value);
-    data.append("State", this.state.value);
-    data.append("Zip", this.zip.value);
-    data.append("Country", this.Country.value);
-
-    fetch("http://localhost:4000/upload", {
-      method: "POST",
-      body: data,
-    }).then((response) => {
-      response.json().then((body) => {});
-    });
+    axios.post("http://localhost:3001/create", newRegistration);
   };
 
   render() {
@@ -119,6 +122,7 @@ class Form extends Component {
             value={this.state.firstName}
             // validateFields={validateFields}
             onChange={this.firsthandler}
+            // onChange={handleChange}
             placeholder="First Name"
           />
           <br />
@@ -127,6 +131,7 @@ class Form extends Component {
             type="text"
             value={this.state.lastName}
             onChange={this.lasthandler}
+            // onChange={handleChange}
             placeholder="Last Name"
           />
           <br />
@@ -135,6 +140,7 @@ class Form extends Component {
             type="text"
             value={this.state.add}
             onChange={this.addressone}
+            // onChange={handleChange}
             placeholder="Address"
           />
           <br />
@@ -143,6 +149,7 @@ class Form extends Component {
             type="text"
             value={this.state.add}
             onChange={this.addresstwo}
+            // onChange={handleChange}
             placeholder="Address"
           />
           <br />
@@ -150,6 +157,7 @@ class Form extends Component {
           <input
             type="text"
             value={this.state.add}
+            // onChange={handleChange}
             onChange={this.cityarea}
             placeholder="City"
           />
@@ -158,6 +166,7 @@ class Form extends Component {
           <input
             type="text"
             value={this.state.add}
+            // onChange={handleChange}
             onChange={this.statearea}
             placeholder="State"
           />
@@ -166,6 +175,7 @@ class Form extends Component {
           <input
             type="text"
             value={this.state.add}
+            // onChange={handleChange}
             onChange={this.ziparea}
             placeholder="ZIP"
             maxLength="9"
