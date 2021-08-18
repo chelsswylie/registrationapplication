@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+// import Select from "react-select";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./form.css";
 
 class Form extends Component {
   constructor(props) {
@@ -12,9 +15,10 @@ class Form extends Component {
       City: "",
       State: "",
       Zip: null,
-      Country: "",
+      Country: "US",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleValidation = this.handleValidation.bind(this);
   }
 
   firsthandler = (event) => {
@@ -58,8 +62,8 @@ class Form extends Component {
     });
   };
 
-  //   Need to add rule for below to only allow US
   countryarea = (event) => {
+    // const actions = [{ label: "US", value: 1 }];
     this.setState({
       country: event.target.value,
     });
@@ -86,7 +90,7 @@ class Form extends Component {
     const data = new FormData();
     data.append("firstName", this.firstName.value);
     data.append("lastName", this.lastName.value);
-    data.append("Address1", this.Address1.value);
+    data.append("Address1", this.addressOne.value);
     data.append("Address2", this.Address2.value);
     data.append("City", this.city.value);
     data.append("State", this.state.value);
@@ -103,21 +107,22 @@ class Form extends Component {
 
   render() {
     return (
-      <div>
+      <div class="body">
         <form onSubmit={this.handleSubmit}>
           <h1>User Registration</h1>
-          <label>FirstName :</label>{" "}
+          <label>First Name:</label> <br></br>
           <input
             type="text"
             ref={(ref) => {
               this.uploadInput = ref;
             }}
             value={this.state.firstName}
+            // validateFields={validateFields}
             onChange={this.firsthandler}
             placeholder="First Name"
           />
           <br />
-          <label>LastName :</label>{" "}
+          <label>Last Name:</label> <br></br>
           <input
             type="text"
             value={this.state.lastName}
@@ -125,7 +130,7 @@ class Form extends Component {
             placeholder="Last Name"
           />
           <br />
-          <label>Address 1 :</label>{" "}
+          <label>Address 1:</label> <br></br>
           <input
             type="text"
             value={this.state.add}
@@ -133,7 +138,7 @@ class Form extends Component {
             placeholder="Address"
           />
           <br />
-          <label>Address 2 :</label>{" "}
+          <label>Address 2:</label> <br></br>
           <input
             type="text"
             value={this.state.add}
@@ -141,7 +146,7 @@ class Form extends Component {
             placeholder="Address"
           />
           <br />
-          <label>City :</label>{" "}
+          <label>City:</label> <br></br>
           <input
             type="text"
             value={this.state.add}
@@ -149,7 +154,7 @@ class Form extends Component {
             placeholder="City"
           />
           <br />
-          <label>State :</label>{" "}
+          <label>State:</label> <br></br>
           <input
             type="text"
             value={this.state.add}
@@ -157,7 +162,7 @@ class Form extends Component {
             placeholder="State"
           />
           <br />
-          <label>Zipcode :</label>{" "}
+          <label>ZIP:</label> <br></br>
           <input
             type="text"
             value={this.state.add}
@@ -165,15 +170,26 @@ class Form extends Component {
             placeholder="ZIP"
           />
           <br />
-          <label>Country :</label>{" "}
-          <input
+          <label>Country :</label> <br></br>
+          <div
+            class="btn btn-secondary dropdown-toggle"
+            href="#"
+            role="button"
+            id="actions"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            US
+          </div>
+          {/* <input
             type="text"
             value={this.state.add}
             onChange={this.countryarea}
             placeholder="Country"
-          />
+          /> */}
           <br />
-          <input type="submit" value="Submit" />
+          <input id="submit" type="submit" value="Submit" />
           {/* When user submits form, needs to upload to MongoDB */}
         </form>
       </div>
