@@ -32,7 +32,7 @@ class Form extends Component {
     });
   };
 
-  addressone = (event) => {
+  address1 = (event) => {
     this.setState({
       addressOne: event.target.value,
     });
@@ -90,19 +90,12 @@ class Form extends Component {
     const data = new FormData();
     data.append("firstName", this.firstName.value);
     data.append("lastName", this.lastName.value);
-    data.append("Address1", this.addressOne.value);
+    data.append("Address1", this.Address1.value);
     data.append("Address2", this.Address2.value);
     data.append("City", this.city.value);
     data.append("State", this.state.value);
     data.append("Zip", this.zip.value);
     data.append("Country", this.Country.value);
-
-    fetch("http://localhost:4000/upload", {
-      method: "POST",
-      body: data,
-    }).then((response) => {
-      response.json().then((body) => {});
-    });
   };
 
   render() {
@@ -172,7 +165,7 @@ class Form extends Component {
             minLength="5"
           />
           <br />
-          <label>Country :</label> <br></br>
+          <label>Country:</label> <br></br>
           <div
             class="btn btn-secondary dropdown-toggle"
             href="#"
