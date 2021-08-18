@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+// Mongoose takes object and posts to MongoDB
 
 const CustomerSchema = mongoose.Schema({
   firstname: {
